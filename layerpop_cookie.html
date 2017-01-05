@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  <!--레이어팝업//-->
+<script type="text/javascript">
+	function notice_getCookie( name )
+	{
+		var nameOfCookie = name + "=";
+		var x = 0;
+		while ( x <= document.cookie.length )
+		{
+				var y = (x+nameOfCookie.length);
+				if ( document.cookie.substring( x, y ) == nameOfCookie ) {
+						if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 )
+								endOfCookie = document.cookie.length;
+						return unescape( document.cookie.substring( y, endOfCookie ) );
+				}
+				x = document.cookie.indexOf( " ", x ) + 1;
+				if ( x == 0 )
+						break;
+		}
+		return "";
+	}
+
+	function setCookie( name, value, expirehours ) {
+		var todayDate = new Date();
+		todayDate.setHours( todayDate.getHours() + expirehours );
+		document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+	}
+
+	function notice_close_1(){
+		if($(".layerpop01 .close_L input").prop("checked")){
+			setCookie("pop_1", "done" , 24);
+		}
+		$(".layerpop01").hide();
+	}
+
+	function notice_close_2(){
+		if($(".layerpop02 .close_L input").prop("checked")){
+			setCookie("pop_2", "done" , 24);
+		}
+		$(".layerpop02").hide();
+	}
+
+	$(document).ready(function(){
+		if(notice_getCookie( "pop_1" ) == "done"){
+			$(".layerpop01").hide();
+		};
+		if(notice_getCookie( "pop_2" ) == "done"){
+			$(".layerpop02").hide();
+		};
+	
+	});
+</script>
+
+
+<div class="layerpopup layerpop01">
+	<div class="layerpopup_content">
+		<p><img src="/images/main/main_pop_161202.jpg" alt="롯데몰 김포공항점 5th Anniversary High-Five, Hi-Five 12.01(목)~12.11(일) 브랜드별 기간 상이" /></p>
+		<div class="close_box">
+			<div class="close_L">
+				<input type="checkbox" id="pop_input_1" />
+				<label for="pop_input_1">하루 동안 이 창을 열지 않음</label>
+			</div>
+			<div class="close_R">
+				<a href="#" onclick="notice_close_1(); return false;"><img src="/images/main/layer_close_btn.gif" alt="닫기" /></a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="layerpopup layerpop02">
+	<div class="layerpopup_content">
+		<p><a href="http://gimpoairport.lottemall.co.kr/handler/Show-Start?main=Y&brchNoLeftMenu=1&vid=953"><img src="/images/main/main_pop_161206.jpg" alt="개점 5주년 기념 썬큰 아이스링크 2016.12.9(금) ~ 2017.2월 말" /></a></p>
+		<div class="close_box">
+			<div class="close_L">
+				<input type="checkbox" id="pop_input_2" />
+				<label for="pop_input_2">하루 동안 이 창을 열지 않음</label>
+			</div>
+			<div class="close_R">
+				<a href="#" onclick="notice_close_2(); return false;"><img src="/images/main/layer_close_btn.gif" alt="닫기" /></a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //레이어팝업-->
+ </body>
+</html>
